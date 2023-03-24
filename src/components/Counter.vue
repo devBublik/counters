@@ -2,8 +2,7 @@
 <template>
     <div class="counter" v-bind:class="{active : isActive }">
         <div class="counter__display">
-            {{ time
-            }}
+            {{ time}}
         </div>
         <div class="counter__controls">
             <IconPause  v-if="isActive" @click="stop"/>
@@ -24,11 +23,18 @@ export default {
         IconStop: IconStop,
         IconPause: IconPause,
     },
+    props: {
+        params: {
+            sec: Number,
+            min: Number,
+            hrs: Number,
+        }
+    },
     data() {
         return {
-            sec: 0,
-            min: 0,
-            hrs: 0,
+            sec: this.params.sec,
+            min: this.params.min,
+            hrs: this.params.hrs,
             base: 60,
             t: 0,
             isActive: false
@@ -36,11 +42,20 @@ export default {
         }
     },
     computed: {
-       time: function() {
-            return (this.hrs > 9 ? this.hrs : "0" + this.hrs)
-                + ":" + (this.min > 9 ? this.min : "0" + this.min)  
-                + ":" + (this.sec > 9 ? this.sec : "0" + this.sec) 
-        } 
+        time: function() {
+            console.log()
+            let val
+            this.val = (this.hrs > 9 ? this.hrs : "0" + this.hrs) 
+        	 + ":" + (this.min > 9 ? this.min : "0" + this.min)
+       		 + ":" + (this.sec > 9 ? this.sec : "0" + this.sec);
+            let arr = this.val.split(':')
+            if (arr[0] === '00' && arr[1] === '00') {
+                this.val=this.sec
+            } else if (arr[0] === '00' && arr[1] != '00')
+                this.val = this.val.slice(3)
+
+            return this.val
+        },
     },  
     methods: {
         tick(){
