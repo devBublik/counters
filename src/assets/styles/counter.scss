@@ -1,0 +1,45 @@
+.counter {
+    background: $color-background;
+    color: $color-text;
+    width: 225px;
+
+    &.active {
+        color: $color-white;
+
+        svg {
+            filter: brightness(5);
+        }
+
+        &__display {
+            border-bottom: 1px solid $color-white;
+        }
+    }
+
+    @media (max-width: 800px) {
+        justify-self: center;
+    }
+
+    svg {
+        cursor: pointer;
+        transition: filter .3s;
+
+        &:hover {
+            filter: brightness(5);
+        }
+    }
+
+    &__display {
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+        border-bottom: 1px solid $color-text;
+    }
+
+    &__controls {
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+        gap: 48px;
+    }
+}

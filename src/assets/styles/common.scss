@@ -1,0 +1,43 @@
+*{
+    box-sizing: border-box;
+}
+
+body, html{
+    height: 100%;
+}
+body, div, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #353638;
+}
+
+#app {
+    font-family: 'Gotham Pro';
+    font-weight: normal;
+    font-size: 22px;
+}
+
+.container {
+    max-width: 805px;
+    padding: 72px 15px 82px;
+    margin: 0 auto;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 45px 50px;
+
+    @media (max-width: 800px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 540px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
